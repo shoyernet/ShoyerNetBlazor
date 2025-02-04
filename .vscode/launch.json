@@ -1,6 +1,15 @@
 {
     "version": "0.2.0",
-    "configurations": [
+    "configurations": [      
+      {
+        "name": "Docker .NET Attach (Preview)",
+        "type": "docker",
+        "request": "attach",
+        "platform": "netCore",
+        "sourceFileMap": {
+          "/src": "${workspaceFolder}"
+        }
+      },
       {
         "name": "Blazor Server Debug (.NET 8)",
         "type": "coreclr",

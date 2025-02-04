@@ -1,0 +1,38 @@
+# Use the official ASP.NET Core runtime as the base image
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+WORKDIR /app
+
+# Expose ports as per launchSettings.json
+EXPOSE 5217
+
+# Enable HTTPS in Docker
+# Enable HTTPS and specify certificate location inside Docker
+ENV ASPNETCORE_URLS="http://+:5217;"
+
+
+# Use the .NET 8 SDK for building the application
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+# Copy project file and restore dependencies
+COPY ["ShoyerNetBlazor.csproj", "./"]
+RUN dotnet restore "ShoyerNetBlazor.csproj"
+
+# Copy everything and build the application
+COPY . .
+RUN dotnet publish "ShoyerNetBlazor.csproj" -c Release -o /app/publish
+
+# Final stage: Create the runtime image
+FROM base AS final
+WORKDIR /app
+COPY --from=build /app/publish .
+
+# Set environment variables for port bindings
+#ENV ASPNETCORE_URLS="http://+:5217;https://+:7015"
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
+
+# Disable HTTPS inside Docker
+ENV ASPNETCORE_URLS="http://+:5217"
+
+# Start the application
+ENTRYPOINT ["dotnet", "ShoyerNetBlazor.dll"]
