@@ -1,0 +1,88 @@
+// main: ../main.scss
+/*--------------------------------------------------------------
+# Why Us Section
+--------------------------------------------------------------*/
+.why-us {
+  .img-bg {
+    min-height: 500px;
+    position: relative;
+
+    img {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+  }
+
+  .slides {
+    background-color: color-mix(in srgb, var(--default-color), transparent 97%);
+  }
+
+  h3 {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  h4 {
+    font-size: 18px;
+    font-weight: 300;
+    color: color-mix(in srgb, var(--default-color), transparent 30%);
+  }
+
+  .swiper {
+    margin: 140px 140px 120px 140px;
+    overflow: hidden;
+  }
+
+  .swiper-wrapper {
+    height: auto;
+  }
+
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
+    font-size: 24px;
+    color: color-mix(in srgb, var(--default-color), transparent 50%);
+  }
+
+  .swiper-button-prev {
+    left: 80px;
+  }
+
+  .swiper-button-next {
+    right: 80px;
+  }
+
+  .swiper-pagination {
+    margin-top: 30px;
+    position: relative;
+
+    .swiper-pagination-bullet {
+      background-color: color-mix(in srgb, var(--default-color), transparent 50%);
+    }
+
+    .swiper-pagination-bullet-active {
+      background-color: var(--accent-color);
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .swiper {
+      margin: 60px 60px 40px 60px;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      display: none;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .swiper {
+      margin: 40px 40px 20px 40px;
+    }
+  }
+}

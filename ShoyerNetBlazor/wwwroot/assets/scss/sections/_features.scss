@@ -1,0 +1,79 @@
+// main: ../main.scss
+/*--------------------------------------------------------------
+# Features Section
+--------------------------------------------------------------*/
+.features {
+  h3 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+
+  .icon-list {
+    i {
+      margin-right: 10px;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    span {
+      font-size: 16px;
+      color: color-mix(in srgb, var(--default-color), transparent 20%);
+    }
+  }
+
+  .phone-wrap {
+    position: absolute;
+    right: 0;
+
+    @media (max-width: 768px) {
+      position: relative;
+    }
+
+    img {
+      width: 340px;
+
+      @media (max-width: 992px) {
+        margin-top: 30px;
+      }
+
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
+  }
+
+  .details {
+    margin-top: 80px;
+    padding: 120px 0;
+    background-color: color-mix(in srgb, var(--default-color), transparent 97%);
+
+    h4 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      font-size: 15px;
+    }
+
+    .btn-get-started {
+      color: var(--contrast-color);
+      background-color: var(--accent-color);
+      font-family: var(--heading-font);
+      display: inline-block;
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 1px;
+      padding: 10px 32px;
+      border-radius: 50px;
+      transition: 0.5s;
+
+      &:hover {
+        background: color-mix(in srgb, var(--accent-color), transparent 20%);
+      }
+    }
+  }
+}

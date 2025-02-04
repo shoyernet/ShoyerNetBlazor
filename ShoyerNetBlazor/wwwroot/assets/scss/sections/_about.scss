@@ -1,0 +1,35 @@
+// main: ../main.scss
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+.about {
+  .content {
+    h3 {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 30px 0;
+      color: color-mix(in srgb, var(--default-color), transparent 40%);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding: 0 0 15px 0;
+        font-weight: 400;
+        display: flex;
+      }
+
+      i {
+        color: var(--accent-color);
+        font-size: 1.25rem;
+        line-height: 1.2;
+        margin-right: .5rem;
+      }
+    }
+  }
+}

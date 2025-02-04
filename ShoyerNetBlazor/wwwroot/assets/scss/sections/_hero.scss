@@ -1,0 +1,114 @@
+// main: ../main.scss
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  padding: 120px 0 60px;
+  display: flex;
+  align-items: center;
+
+  @media (min-width: 1200px) {
+    &:after {
+      position: absolute;
+      content: "";
+      width: 44%;
+      background-image: linear-gradient(180deg, color-mix(in srgb, var(--background-color), transparent 15%), color-mix(in srgb, var(--background-color), transparent 15%) 100%), linear-gradient(180deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 100%);
+      top: 0;
+      bottom: 0;
+      z-index: 2;
+    }
+  }
+
+  &:before {
+    position: absolute;
+    content: "";
+    background: color-mix(in srgb, var(--background-color), transparent 40%);
+    inset: 0;
+    z-index: 2;
+  }
+
+  img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .container,
+  .container-fluid {
+    z-index: 3;
+    position: relative;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 700;
+  }
+
+  blockquote {
+    color: color-mix(in srgb, var(--default-color), transparent 20%);
+    padding-left: 20px;
+    border-left: 2px solid var(--accent-color);
+    margin: 40px 0;
+  }
+
+  .btn-get-started {
+    color: var(--contrast-color);
+    background: var(--accent-color);
+    font-family: var(--heading-font);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    transition: 0.5s;
+
+    &:hover {
+      background: color-mix(in srgb, var(--accent-color) 90%, white 15%);
+    }
+  }
+
+  .btn-watch-video {
+    font-size: 16px;
+    transition: 0.5s;
+    margin-left: 25px;
+    color: var(--default-color);
+    font-weight: 600;
+
+    i {
+      color: color-mix(in srgb, var(--default-color), transparent 50%);
+      font-size: 32px;
+      transition: 0.3s;
+      line-height: 0;
+      margin-right: 8px;
+    }
+
+    &:hover {
+      color: var(--default-color);
+
+      i {
+        color: var(--default-color);
+      }
+    }
+  }
+
+  @media (max-width: 640px) {
+    h1 {
+      font-size: 28px;
+      line-height: 36px;
+    }
+
+    .btn-get-started,
+    .btn-watch-video {
+      font-size: 13px;
+    }
+  }
+}
