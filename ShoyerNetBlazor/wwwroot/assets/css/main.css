@@ -87,6 +87,29 @@ h6 {
   font-family: var(--heading-font);
 }
 
+.video-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+  .video-container video {
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+  }
+
 /* PHP Email Form Messages
 ------------------------------*/
 .php-email-form .error-message {
@@ -751,6 +774,16 @@ section,
 }
 
 .hero img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.hero video {
   position: absolute;
   inset: 0;
   display: block;
