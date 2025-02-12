@@ -209,6 +209,32 @@ h6 {
 /* Navmenu - Desktop */
 @media (min-width: 1200px) {
 
+    #homeCarouselWrapper {
+        width: 400px;
+        height: 250px;
+    }
+
+        #homeCarouselWrapper .title {
+            font-size: xx-large;
+            margin-bottom: 20px;
+            font-weight: bolder;
+            margin-left: 1px;
+        }
+
+        #homeCarouselWrapper #homeCarousel .carousel-inner {
+            height: 150px;
+        }
+
+        #homeCarouselWrapper #homeCarousel .carousel-item .headline {
+            font-size: x-large;
+            margin-bottom: 15px;
+        }
+
+        #homeCarouselWrapper #homeCarousel .carousel-indicators {
+            margin-top: 10px;
+            position: relative !important;
+        }
+
     #map {
         width: 400px;
         height: 200px;
