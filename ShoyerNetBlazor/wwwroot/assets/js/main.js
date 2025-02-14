@@ -52,7 +52,9 @@ initMap();
     }
 
     document.addEventListener('scroll', toggleScrolled);
-    window.addEventListener('load', toggleScrolled);
+    window.addEventListener('load', function () {
+        toggleScrolled();
+    });
 
     /**
      * Mobile nav toggle
