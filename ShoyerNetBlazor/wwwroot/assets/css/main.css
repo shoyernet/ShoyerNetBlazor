@@ -60,6 +60,7 @@
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
+
 body {
     color: var(--default-color);
     background-color: var(--background-color);
@@ -2517,3 +2518,39 @@ section,
                 color: color-mix(in srgb, var(--default-color), transparent 60%);
                 font-size: 14px;
             }
+
+/*--------------------------------------------------------------
+# CSS Effects
+--------------------------------------------------------------*/
+
+.typeWriter {
+    display: flex;
+    color: var(--heading-color);
+    font-family: var(--heading-font);
+}
+
+    .typeWriter h3 {
+        color: rgba(var(--bs-primary-rgb),var(--bs-text-opacity)) !important;
+        text-align: center;
+        margin-inline: auto;
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 1px solid;
+        animation: typing 3s steps(22) forwards, blink 1s step-end infinite;
+    }
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
