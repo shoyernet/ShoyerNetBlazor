@@ -1,4 +1,4 @@
-using ShoyerNetBlazor.Components;
+﻿using ShoyerNetBlazor.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +7,9 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 var app = builder.Build();
+
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+app.Urls.Add($"http://0.0.0.0:{port}");
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

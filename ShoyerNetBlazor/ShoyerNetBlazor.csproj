@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Build.Containers" Version="8.0.406" />
+  </ItemGroup>
+
 </Project>

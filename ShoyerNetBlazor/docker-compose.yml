@@ -1,10 +1,10 @@
 version: '3.8'
 services:
   blazorserver:
-    image: your-blazor-app
+    image: ShoyerNetBlazor
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "5217:5217"
-      - "7015:7015"
+      - "8080:8080"
+      

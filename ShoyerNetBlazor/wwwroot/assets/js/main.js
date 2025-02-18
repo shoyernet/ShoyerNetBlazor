@@ -9,6 +9,7 @@
 
 // Initialize and add the map
 var map;
+let backgroundVideo = document.getElementById("backgroundVideo");
 
 async function initMap() {
     const position = { lat: 43.638259956677025, lng: -79.41482508881865 };
@@ -98,6 +99,8 @@ async function initMap() {
                 // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
                 // Add other bootstrap parameters as needed, using camel case.
             });
+
+            backgroundVideo.play();
 
             initMap();
         });

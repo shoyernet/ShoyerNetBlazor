@@ -2,13 +2,13 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
 
-# Expose ports as per launchSettings.json
-EXPOSE 5217
-
 # Enable HTTPS in Docker
 # Enable HTTPS and specify certificate location inside Docker
-ENV ASPNETCORE_URLS="http://+:5217;"
+ENV ASPNETCORE_URLS=http://+:8080
+ENV DOTNET_URLS=http://+:8080
 
+# Expose ports as per launchSettings.json
+EXPOSE 8080
 
 # Use the .NET 8 SDK for building the application
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
@@ -28,11 +28,9 @@ WORKDIR /app
 COPY --from=build /app/publish .
 
 # Set environment variables for port bindings
-#ENV ASPNETCORE_URLS="http://+:5217;https://+:7015"
+#ENV ASPNETCORE_URLS="http://+:8080;https://+:7015"
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 
-# Disable HTTPS inside Docker
-ENV ASPNETCORE_URLS="http://+:5217"
 
 # Start the application
 ENTRYPOINT ["dotnet", "ShoyerNetBlazor.dll"]
