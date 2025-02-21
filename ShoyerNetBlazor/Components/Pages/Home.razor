@@ -54,6 +54,22 @@
 		</div>
 	</div>
 
+	<!-- Chat Bubble Button -->
+	<div class="chat-bubble" onclick="toggleChat()">
+		💬
+	</div>
+
+	<!-- Chat Box -->
+	<div class="chat-box" id="chatBox">
+		<span class="close-btn" onclick="toggleChat()">✖</span>
+		<header>Chat Support</header>
+		<div class="messages">
+			<p><strong>Bot:</strong> Hello! How can I assist you?</p>
+		</div>
+		<input type="text" placeholder="Type a message...">
+	</div>
+
+
 
 </section><!-- /Hero Section -->
 @code {
