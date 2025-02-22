@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -9,6 +9,10 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
     <PackageReference Include="Microsoft.NET.Build.Containers" Version="8.0.406" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ShoyerNetBlazor.Common\ShoyerNetBlazor.Common.csproj" />
   </ItemGroup>
 
 </Project>
