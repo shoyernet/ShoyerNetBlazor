@@ -64,7 +64,7 @@
 	<div class="chat-box" id="chatBox">
 		<span class="close-btn" onclick="toggleChat()">✖</span>
 		<header>Chat Support</header>
-		<div>
+		<div style="color: black;">
 			@foreach (var message in messages)
 			{
 				@message
@@ -74,9 +74,6 @@
 		<input @bind="messageInput" placeholder="Your message" />
 		<button class="btn btn-primary" @onclick="SendMessage">Send</button>
 	</div>
-
-
-
 </section>
 
 @code {
