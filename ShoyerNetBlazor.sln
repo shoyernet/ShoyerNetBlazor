@@ -4,8 +4,6 @@ VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoyerNetBlazor", "ShoyerNetBlazor\ShoyerNetBlazor.csproj", "{479F7932-17F8-96E0-22F4-C7C9DDE97562}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoyerNetBlazor.Common", "ShoyerNetBlazor.Common\ShoyerNetBlazor.Common.csproj", "{0741DFF3-EB56-4391-9A29-6346C011BA7D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoyerNetBlazor.BL", "ShoyerNetBlazor.BL\ShoyerNetBlazor.BL.csproj", "{A3EDCF96-A0CB-4F9C-B654-BF0C16133967}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoyerNetBlazor.App", "ShoyerNetBlazor.App\ShoyerNetBlazor.App.csproj", "{565B40EB-24C8-4F05-8ED9-7367649CF94B}"
@@ -22,10 +20,6 @@ Global
 		{479F7932-17F8-96E0-22F4-C7C9DDE97562}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{479F7932-17F8-96E0-22F4-C7C9DDE97562}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{479F7932-17F8-96E0-22F4-C7C9DDE97562}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0741DFF3-EB56-4391-9A29-6346C011BA7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0741DFF3-EB56-4391-9A29-6346C011BA7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0741DFF3-EB56-4391-9A29-6346C011BA7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0741DFF3-EB56-4391-9A29-6346C011BA7D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A3EDCF96-A0CB-4F9C-B654-BF0C16133967}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A3EDCF96-A0CB-4F9C-B654-BF0C16133967}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3EDCF96-A0CB-4F9C-B654-BF0C16133967}.Release|Any CPU.ActiveCfg = Release|Any CPU
