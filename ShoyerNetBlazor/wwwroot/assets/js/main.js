@@ -1,10 +1,59 @@
-/**
-* Template Name: Nova
-* Template URL: https://bootstrapmade.com/nova-bootstrap-business-template/
-* Updated: Aug 07 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+﻿// JavaScript for a custom smooth scroll with adjustable speed
+function smoothScroll(target, duration) {
+    const targetElement = document.querySelector(target);
+    if (!targetElement) return;
+
+    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
+
+    // Easing function for smooth animation (easeInOutQuad)
+    function ease(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return (c / 2) * t * t + b;
+        t--;
+        return (-c / 2) * (t * (t - 2) - 1) + b;
+    }
+
+    function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = ease(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+    }
+
+    requestAnimationFrame(animation);
+}
+
+// Attach click event to all internal links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        smoothScroll(this.getAttribute('href'), 1000);
+    });
+});
+
+
+
+window.pageReady = () => {
+
+}
+
+window.onload = function () {
+    // Your code here
+    window.setBackgroundVideoSource = (sourceUrl) => {
+        debugger;
+        let videoElement = document.getElementById("backgroundVideo");
+        if (videoElement) {
+            videoElement.src = sourceUrl;
+            videoElement.load();
+        } else {
+            console.error("❌ Video element not found!");
+        }
+    };
+};
 
 function toggleChat() {
     var chatBox = document.getElementById("chatBox");
@@ -14,7 +63,6 @@ function toggleChat() {
         chatBox.style.display = "none";
     }
 }
-
 
 // Initialize and add the map
 var map;

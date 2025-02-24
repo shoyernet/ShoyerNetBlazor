@@ -319,8 +319,6 @@ h6 {
             color: #1F2930;
         }
 
-
-
     #homeCarouselWrapper {
         width: 400px;
         height: 250px;
@@ -462,6 +460,37 @@ h6 {
 
 /* Navmenu - Mobile */
 @media (max-width: 1199px) {
+
+    .anibox {
+        padding: 10px;
+        background: #FEC400;
+        border-radius: 10px;
+        position: relative;
+        cursor: pointer;
+        border-left: 2px solid transparent;
+        transition: border-left 0.5s ease-in-out;
+        height: 100px;
+    }
+
+        .anibox:hover {
+            border-left: 2px solid black; /* Expands smoothly */
+        }
+
+        .anibox .title .bullet {
+            color: #0d6efd;
+            font-size: 1.0rem !important;
+            margin-right: 10px;
+            font-weight: bolder;
+        }
+
+        .anibox .title .text {
+            color: black;
+            font-weight: bolder;
+        }
+
+        .anibox .body .text {
+            color: #1F2930;
+        }
 
     #homeCarouselWrapper {
         margin: 0 10px;
