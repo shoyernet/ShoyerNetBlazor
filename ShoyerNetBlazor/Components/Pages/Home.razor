@@ -1,6 +1,7 @@
 ﻿@page "/"
 @rendermode InteractiveServer
 
+@using Microsoft.AspNetCore.Components.Web
 @using Microsoft.AspNetCore.SignalR.Client
 @using Microsoft.Extensions.DependencyInjection
 @inject NavigationManager NavigationManager
@@ -8,11 +9,7 @@
 
 <section id="home-section" class="hero section dark-background">
 
-	<div class="video-container" alt="" data-aos="fade-in" style="z-index: 1000;">
-		<video id="backgroundVideo" autoplay muted playsinline loop style="width: 100%; height: 100%;">
-			<source type="video/mp4" src="@SelectVideo()">
-		</video>
-	</div>
+	<BackgroundVideoPlayer @rendermode="StaticRenderMode" />
 
 	<div class="container">
 		<div class="row">
@@ -77,19 +74,8 @@
 </section>
 
 @code {
-	private string SelectVideo()
-	{
-		var videos = new List<string>
-		{
-			"/assets/clips/background1.mp4",
-			"/assets/clips/background2.mp4",
-			"/assets/clips/background3.mp4",
-		};
-
-		var randomNumber = new Random().Next(0, 2);
-
-		return videos[randomNumber];
-	}
+	// Define a property that returns null, which tells Blazor to use static SSR.
+	private IComponentRenderMode? StaticRenderMode => null;
 
 	private string userInput;
 	private string messageInput;

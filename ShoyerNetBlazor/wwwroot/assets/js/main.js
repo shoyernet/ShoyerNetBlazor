@@ -1,4 +1,14 @@
-﻿// JavaScript for a custom smooth scroll with adjustable speed
+﻿// wwwroot/js/videoInterop.js
+window.videoInterop = {
+    setVideoSourceById: function (elementId, newSource) {
+        var videoElement = document.getElementById(elementId);
+        if (videoElement) {
+            videoElement.src = newSource;
+            videoElement.load(); // Reloads the video with the new source.
+        }
+    }
+};
+
 function smoothScroll(target, duration) {
     const targetElement = document.querySelector(target);
     if (!targetElement) return;
@@ -34,8 +44,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         smoothScroll(this.getAttribute('href'), 1000);
     });
 });
-
-
 
 window.pageReady = () => {
 

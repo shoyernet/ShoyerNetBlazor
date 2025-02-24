@@ -1,0 +1,37 @@
+﻿@inject IJSRuntime JS
+
+<video id="videoBackground" autoplay muted playsinline loop style="width: 100%; height: 100%;">
+    <source type="video/mp4" >
+</video>
+
+
+
+@code {
+
+    private List<string> videoList = new List<string>
+    {
+        "/assets/clips/background1.mp4",
+        "/assets/clips/background2.mp4",
+        "/assets/clips/background3.mp4"
+    };
+
+    // This method chooses a random video and uses JS interop to update the video source.
+    private async Task SetRandomVideo()
+    {
+        var random = new Random();
+        int index = random.Next(videoList.Count);
+        var chosenVideo = videoList[index];
+
+        // Call our JS function (defined in wwwroot/js/videoInterop.js)
+        await JS.InvokeVoidAsync("videoInterop.setVideoSourceById", "videoBackground", chosenVideo);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Run the method when the component is first rendered interactively.
+            await SetRandomVideo();
+        }
+    }
+}
