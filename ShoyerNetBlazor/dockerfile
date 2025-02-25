@@ -2,6 +2,12 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
 
+# Set the environment variable to point to the key inside the container
+ENV GOOGLE_APPLICATION_CREDENTIALS=/app/we4u-blazor-302887f518f4.json
+
+# Copy the key file from your build context into the container
+COPY we4u-blazor-302887f518f4.json /app/we4u-blazor-302887f518f4.json
+
 # Enable HTTPS in Docker
 # Enable HTTPS and specify certificate location inside Docker
 ENV ASPNETCORE_URLS=http://+:8080

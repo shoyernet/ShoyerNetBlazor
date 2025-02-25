@@ -287,6 +287,14 @@ h6 {
 --------------------------------------------------------------*/
 /* Navmenu - Desktop */
 @media (min-width: 1200px) {
+    #googleMap {
+        width: 400px;
+        height: 200px;
+        margin: 20px 58px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display: inline-block;
+    }
 
     .anibox {
         padding: 10px;
@@ -344,14 +352,6 @@ h6 {
             margin-top: 10px;
             position: relative !important;
         }
-
-    #map {
-        width: 400px;
-        height: 200px;
-        margin: 20px 58px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
 
     .navmenu {
         padding: 0;
@@ -460,6 +460,14 @@ h6 {
 
 /* Navmenu - Mobile */
 @media (max-width: 1199px) {
+    #googleMap {
+        width: 300px;
+        height: 200px;
+        margin: 20px 58px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display: inline-block;
+    }
 
     .anibox {
         padding: 10px;
@@ -803,7 +811,7 @@ h6 {
     position: fixed;
     visibility: hidden;
     opacity: 0;
-    right: 15px;
+    left: 15px;
     bottom: 15px;
     z-index: 99999;
     background-color: var(--accent-color);

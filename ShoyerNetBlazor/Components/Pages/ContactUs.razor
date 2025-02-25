@@ -1,4 +1,9 @@
-﻿<!-- Contact Section -->
+﻿@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.SignalR.Client
+@using Microsoft.Extensions.DependencyInjection
+@inject NavigationManager NavigationManager
+
+<!-- Contact Section -->
 <section id="contact" class="contact section">
 
 	<div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
@@ -14,7 +19,7 @@
 					</div>
 				</div><!-- End Info Item -->
 
-				<div id="map"></div>
+				<GoogleMap @rendermode="StaticRenderMode" />
 
 				<div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
 					<i class="bi bi-telephone flex-shrink-0"></i>
@@ -72,5 +77,6 @@
 
 </section><!-- /Contact Section -->
 @code {
-
+	// Define a property that returns null, which tells Blazor to use static SSR.
+	private IComponentRenderMode? StaticRenderMode => null;
 }

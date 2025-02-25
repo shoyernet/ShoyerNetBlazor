@@ -1,28 +1,29 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Google.Cloud.SecretManager.V1;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ShoyerNetBlazor.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class TestController : ControllerBase
-    {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
+    {  
         [HttpGet]
-        public IActionResult GetWeather()
+        public IActionResult Test()
         {
-            var rng = new Random();
-            var weather = Enumerable.Range(1, 5).Select(index => new
-            {
-                Date = DateTime.Now.AddDays(index).ToShortDateString(),
-                TemperatureC = rng.Next(-20, 35),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            }).ToArray();
+            // The client picks up credentials from GOOGLE_APPLICATION_CREDENTIALS
+            SecretManagerServiceClient client = SecretManagerServiceClient.Create();
 
-            return Ok(weather);
+            // Build the resource name for the secret version
+            SecretVersionName secretVersionName = new SecretVersionName("we4u-blazor", "TenantId", "latest");
+
+            // Access the secret version.
+            AccessSecretVersionResponse result = client.AccessSecretVersion(secretVersionName);
+
+            // Extract the secret payload as a string.
+            string secretPayload = result.Payload.Data.ToStringUtf8();
+           
+
+            return Ok(secretPayload);
         }
     }
 }

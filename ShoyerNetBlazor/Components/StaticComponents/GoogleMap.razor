@@ -1,0 +1,15 @@
+﻿@inject IJSRuntime JSRuntime
+
+<div id="googleMap"></div>
+
+@code {
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		Console.WriteLine("OnAfterRenderAsync");
+		if (firstRender)
+		{
+
+			await JSRuntime.InvokeVoidAsync("initMap");
+		}
+	}
+}

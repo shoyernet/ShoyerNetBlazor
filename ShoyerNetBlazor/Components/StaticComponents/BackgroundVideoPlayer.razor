@@ -4,8 +4,6 @@
     <source type="video/mp4" >
 </video>
 
-
-
 @code {
 
     private List<string> videoList = new List<string>
@@ -15,14 +13,12 @@
         "/assets/clips/background3.mp4"
     };
 
-    // This method chooses a random video and uses JS interop to update the video source.
     private async Task SetRandomVideo()
     {
         var random = new Random();
         int index = random.Next(videoList.Count);
         var chosenVideo = videoList[index];
 
-        // Call our JS function (defined in wwwroot/js/videoInterop.js)
         await JS.InvokeVoidAsync("videoInterop.setVideoSourceById", "videoBackground", chosenVideo);
     }
 
