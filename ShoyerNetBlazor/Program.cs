@@ -1,4 +1,6 @@
 ﻿using ShoyerNetBlazor.BL.HostApplicationExtensions;
+using ShoyerNetBlazor.BL.Interfaces;
+using ShoyerNetBlazor.BL.Services;
 using ShoyerNetBlazor.Common.Hubs;
 using ShoyerNetBlazor.Components;
 
@@ -15,6 +17,8 @@ builder.Services.AddSignalR();
 var googleJsonPath = builder.Configuration["GOOGLE"] ?? string.Empty;
 
 builder.AddWE4UGoogleServices(googleJsonPath);
+
+builder.AddWE4UMicrosoftGraph();
 
 var app = builder.Build();
 

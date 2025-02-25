@@ -3,5 +3,7 @@
     public interface IGoogleCloudServices
     {
         string GetSecret(string secretName);
+
+        byte[] GetSecretFile(string secretName);
     }
 }

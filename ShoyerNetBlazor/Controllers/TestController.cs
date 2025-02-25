@@ -7,18 +7,18 @@ namespace ShoyerNetBlazor.Controllers
     [ApiController]
     public class TestController : ControllerBase
     {
-        private readonly IGoogleCloudServices _googleServices;
+        private readonly IMicrosoftService _microsoftService;
 
-        public TestController(IGoogleCloudServices googleServices)
+        public TestController(IMicrosoftService microsoftService)
         {
-            _googleServices = googleServices;
+            _microsoftService = microsoftService;
         }
 
         [HttpGet]
         public IActionResult Test()
         {
 
-            var secret = _googleServices.GetSecret("TenantId");
+            var secret = _microsoftService.SendMail("roy@shoyer.net", "test", "test");
             return Ok(secret);
         }
     }

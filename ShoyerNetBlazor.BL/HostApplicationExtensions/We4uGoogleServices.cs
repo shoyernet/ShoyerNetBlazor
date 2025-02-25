@@ -10,7 +10,8 @@
             }
 
             // Register the service using a factory method to pass in the custom parameter.
-            builder.Services.AddSingleton<IGoogleCloudServices>(sp => new GoogleCloudServices(jsonPath));
+            builder.Services.AddScoped<IGoogleCloudServices>(sp => new GoogleCloudServices(jsonPath));
+            
             return builder;
         }
     }
