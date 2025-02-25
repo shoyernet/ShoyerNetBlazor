@@ -4,7 +4,8 @@
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "GOOGLE": "C:\\Users\\roy\\source\\ProjectFiles\\ShoyerNetBlazor\\we4u-blazor-8cb8f81f9498.json"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:8080"

@@ -32,7 +32,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseAntiforgery();
@@ -43,7 +43,7 @@ app.MapRazorComponents<App>()
 
 app.MapHub<ChatHub>("/chathub");
 
-//var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-//app.Urls.Add($"http://0.0.0.0:{port}");
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+app.Urls.Add($"http://0.0.0.0:{port}");
 
 app.Run();
