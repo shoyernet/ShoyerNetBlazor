@@ -14,7 +14,7 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "GOOGLE_APPLICATION_CREDENTIALS": "C:\\Users\\roy\\source\\ProjectFiles\\ShoyerNetBlazor\\we4u-blazor-8cb8f81f9498.json"
+        "GOOGLE": "C:\\Users\\roy\\source\\ProjectFiles\\ShoyerNetBlazor\\we4u-blazor-8cb8f81f9498.json"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7015;http://localhost:8080"

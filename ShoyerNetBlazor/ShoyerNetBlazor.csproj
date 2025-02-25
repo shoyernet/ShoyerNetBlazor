@@ -13,4 +13,14 @@
     <PackageReference Include="Microsoft.NET.Build.Containers" Version="8.0.406" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ShoyerNetBlazor.BL\ShoyerNetBlazor.BL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="we4u-blazor-8cb8f81f9498.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

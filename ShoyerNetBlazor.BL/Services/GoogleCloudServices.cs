@@ -2,6 +2,11 @@
 {
     public class GoogleCloudServices : IGoogleCloudServices
     {
+        public GoogleCloudServices(string apiJsonPath)
+        {
+            
+        }
+
         public string GetSecret(string secretName)
         {
             // The client picks up credentials from GOOGLE_APPLICATION_CREDENTIALS

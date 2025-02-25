@@ -10,7 +10,7 @@ namespace ShoyerNetBlazor.Controllers
         public IActionResult Test()
         {
            
-            return Ok(secretPayload);
+            return Ok();
         }
     }
 }
