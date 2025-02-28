@@ -15,10 +15,10 @@ namespace ShoyerNetBlazor.Controllers
         }
 
         [HttpGet]
-        public IActionResult Test()
+        public async Task<IActionResult> Test()
         {
 
-            var secret = _microsoftService.SendMail("roy@shoyer.net", "test", "test");
+            var secret = await _microsoftService.SendMail("roy@shoyer.net", "test", new List<string> { "roy.shoyer@gmail.com" });
             return Ok(secret);
         }
     }

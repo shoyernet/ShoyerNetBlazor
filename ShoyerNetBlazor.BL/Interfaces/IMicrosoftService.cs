@@ -2,6 +2,6 @@
 {
     public interface IMicrosoftService
     {
-        bool SendMail(string to, string subject, string body);
+        Task<bool> SendMail(string subject, string body, List<string> to);
     }
 }

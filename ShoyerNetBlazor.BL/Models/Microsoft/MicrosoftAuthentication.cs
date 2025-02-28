@@ -1,16 +1,20 @@
 ﻿using System.Security.Cryptography.X509Certificates;
+using Azure.Identity;
 
-namespace ShoyerNetBlazor.BL.Models
+namespace ShoyerNetBlazor.BL.Models.Microsoft
 {
     public class MicrosoftAuthentication
     {
         private IServiceProvider _serviceProvider;
 
-        public string TenantId { get; private set; }
+        private readonly string _tenantId;
 
-        public string ClientId { get; private set; }
+        private readonly string _clientId;
 
-        public X509Certificate2 AuthenticationCertificate { get; private set; }
+        private readonly X509Certificate2 _authenticationCertificate;
+
+        public ClientCertificateCredential ClientCertificateCredential { get; private set; }
+
 
         /// <summary>
         ///     Microsoft Graph is using a certificate for authentication.
@@ -26,19 +30,22 @@ namespace ShoyerNetBlazor.BL.Models
             var googleCloudServices = scope.ServiceProvider.GetRequiredService<IGoogleCloudServices>();
 
 
-            TenantId = googleCloudServices.GetSecret("TenantId");
-            ClientId = googleCloudServices.GetSecret("ClientId");
+            _tenantId = googleCloudServices.GetSecret("TenantId");
+            _clientId = googleCloudServices.GetSecret("ClientId");
 
             var pfxPassword = googleCloudServices.GetSecret("MicrosoftPassword");
 
             byte[] certData = googleCloudServices.GetSecretFile("WE4U-PFX");
 
             // Load the certificate with optional storage flags.
-            AuthenticationCertificate = new X509Certificate2(
+            _authenticationCertificate = new X509Certificate2(
                certData,
                pfxPassword,
-               X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet
-           );
+               X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
+
+
+            ClientCertificateCredential = new ClientCertificateCredential(_tenantId, _clientId, _authenticationCertificate);
+
         }
     }
 }
