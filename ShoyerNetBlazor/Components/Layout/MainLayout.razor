@@ -11,7 +11,7 @@
 			<Home />
 			<AboutUs />
 			<Services />
-			<ContactUs />
+			<ContactUs @rendermode="InteractiveServer" />
 		</ChildContent>
 		<ErrorContent>
 			<p class="fw-bold text-danger">@context.Message</p>
@@ -26,4 +26,3 @@
 
 <!-- Preloader -->
 <div id="preloader"></div>
-

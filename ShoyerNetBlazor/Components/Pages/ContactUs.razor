@@ -1,6 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Components.Web
 @using Microsoft.AspNetCore.SignalR.Client
 @using Microsoft.Extensions.DependencyInjection
+@using ShoyerNetBlazor.Models
 @inject NavigationManager NavigationManager
 
 <!-- Contact Section -->
@@ -40,43 +41,65 @@
 			</div>
 
 			<div class="col-lg-7">
-				<form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="500">
+				<EditForm Model="ContactForm" OnValidSubmit="Submit" FormName="ContactForm" class="php-email-form" data-aos="fade-up" data-aos-delay="500">
+					<DataAnnotationsValidator />
 					<div class="row gy-4">
-
-						<div class="col-md-6">
-							<input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+						<div class="col-lg-6 mb-3">
+							<label>First Name:</label>
+							<InputText @bind-Value="ContactForm.FirstName" class="form-control" />
+							<ValidationMessage For="@(() => ContactForm.FirstName)" class="text-danger" />
 						</div>
 
-						<div class="col-md-6 ">
-							<input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+						<div class="col-lg-6 mb-3">
+							<label>Last Name:</label>
+							<InputText @bind-Value="ContactForm.LastName" class="form-control" />
+							<ValidationMessage For="@(() => ContactForm.LastName)" class="text-danger" />
 						</div>
-
-						<div class="col-md-12">
-							<input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-						</div>
-
-						<div class="col-md-12">
-							<textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-						</div>
-
-						<div class="col-md-12 text-center">
-							<div class="loading">Loading</div>
-							<div class="error-message"></div>
-							<div class="sent-message">Your message has been sent. Thank you!</div>
-
-							<button type="submit">Send Message</button>
-						</div>
-
 					</div>
-				</form>
+
+					<div class="row">
+						<div class="col-12 mb-3">
+							<label>Email Address:</label>
+							<InputText @bind-Value="ContactForm.Email" class="form-control" />
+							<ValidationMessage For="@(() => ContactForm.Email)" class="text-danger" />
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-12 mb-3">
+							<label>Telephone Number:</label>
+							<InputText @bind-Value="ContactForm.PhoneNumber" class="form-control" />
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="mb-3">
+							<label>Message:</label>
+							<InputTextArea @bind-Value="ContactForm.Message" class="form-control" />
+							<ValidationMessage For="@(() => ContactForm.Message)" class="text-danger" />
+						</div>
+					</div>
+					<button type="submit">Submit</button>
+				</EditForm>
 			</div><!-- End Contact Form -->
-
 		</div>
-
 	</div>
 
 </section><!-- /Contact Section -->
 @code {
+
+	[SupplyParameterFromForm]
+	private ContactForm ContactForm { get; set; }
+
+	protected override void OnInitialized() => ContactForm ??= new();
+
+
 	// Define a property that returns null, which tells Blazor to use static SSR.
 	private IComponentRenderMode? StaticRenderMode => null;
+
+
+	private void Submit()
+	{
+		Console.WriteLine("r");
+	}
 }
