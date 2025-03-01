@@ -1,7 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Components.Web
 @using Microsoft.AspNetCore.SignalR.Client
 @using Microsoft.Extensions.DependencyInjection
+@using ShoyerNetBlazor.BL.Interfaces
 @using ShoyerNetBlazor.Models
+
+@inject IMicrosoftService MicrosoftService
 @inject NavigationManager NavigationManager
 
 <!-- Contact Section -->
@@ -41,46 +44,56 @@
 			</div>
 
 			<div class="col-lg-7">
-				<EditForm Model="ContactForm" OnValidSubmit="Submit" FormName="ContactForm" class="php-email-form" data-aos="fade-up" data-aos-delay="500">
-					<DataAnnotationsValidator />
-					<div class="row gy-4">
-						<div class="col-lg-6 mb-3">
-							<label>First Name:</label>
-							<InputText @bind-Value="ContactForm.FirstName" class="form-control" />
-							<ValidationMessage For="@(() => ContactForm.FirstName)" class="text-danger" />
+				@if (!_isSubmitted)
+				{
+					<EditForm Model="ContactForm" OnValidSubmit="Submit" FormName="ContactForm">
+						<DataAnnotationsValidator />
+						<div class="row gy-4">
+							<div class="col-lg-6 mb-3">
+								<label>First Name:</label>
+								<InputText @bind-Value="ContactForm.FirstName" class="form-control" />
+								<ValidationMessage For="@(() => ContactForm.FirstName)" class="text-danger" />
+							</div>
+
+							<div class="col-lg-6 mb-3">
+								<label>Last Name:</label>
+								<InputText @bind-Value="ContactForm.LastName" class="form-control" />
+								<ValidationMessage For="@(() => ContactForm.LastName)" class="text-danger" />
+							</div>
 						</div>
 
-						<div class="col-lg-6 mb-3">
-							<label>Last Name:</label>
-							<InputText @bind-Value="ContactForm.LastName" class="form-control" />
-							<ValidationMessage For="@(() => ContactForm.LastName)" class="text-danger" />
+						<div class="row">
+							<div class="col-12 mb-3">
+								<label>Email Address:</label>
+								<InputText @bind-Value="ContactForm.Email" class="form-control" />
+								<ValidationMessage For="@(() => ContactForm.Email)" class="text-danger" />
+							</div>
 						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-12 mb-3">
-							<label>Email Address:</label>
-							<InputText @bind-Value="ContactForm.Email" class="form-control" />
-							<ValidationMessage For="@(() => ContactForm.Email)" class="text-danger" />
+						<div class="row">
+							<div class="col-12 mb-3">
+								<label>Telephone Number:</label>
+								<InputText @bind-Value="ContactForm.PhoneNumber" class="form-control" />
+							</div>
 						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-12 mb-3">
-							<label>Telephone Number:</label>
-							<InputText @bind-Value="ContactForm.PhoneNumber" class="form-control" />
+						<div class="row">
+							<div class="mb-3">
+								<label>Message:</label>
+								<InputTextArea @bind-Value="ContactForm.Message" class="form-control" />
+								<ValidationMessage For="@(() => ContactForm.Message)" class="text-danger" />
+							</div>
 						</div>
+						<button type="submit">Submit</button>
+					</EditForm>
+				}
+				else
+				{
+					<div class="alert alert-success" role="alert">
+						<h4 class="alert-heading">Thank you!</h4>
+						<p>Your message has been sent successfully.</p>
 					</div>
-
-					<div class="row">
-						<div class="mb-3">
-							<label>Message:</label>
-							<InputTextArea @bind-Value="ContactForm.Message" class="form-control" />
-							<ValidationMessage For="@(() => ContactForm.Message)" class="text-danger" />
-						</div>
-					</div>
-					<button type="submit">Submit</button>
-				</EditForm>
+				}
 			</div><!-- End Contact Form -->
 		</div>
 	</div>
@@ -90,6 +103,7 @@
 
 	[SupplyParameterFromForm]
 	private ContactForm ContactForm { get; set; }
+	private bool _isSubmitted = false;
 
 	protected override void OnInitialized() => ContactForm ??= new();
 
@@ -98,8 +112,19 @@
 	private IComponentRenderMode? StaticRenderMode => null;
 
 
-	private void Submit()
+	private async Task Submit()
 	{
-		Console.WriteLine("r");
+		var body = "<html><body><h1>Message from we4u.solutions</h1>" +
+		$"<p>First Name: {ContactForm.FirstName}</p>" +
+		$"<p>Last Name: {ContactForm.LastName}</p>" +
+		$"<p>Email: {ContactForm.Email}</p>" +
+		$"<p>Phone Number: {ContactForm.PhoneNumber}</p>" +
+		$"<p>Message: {ContactForm.Message}</p>" +
+		"</body></html>";
+
+		await MicrosoftService.SendMail($"A contact request from website: {ContactForm.FirstName} {ContactForm.LastName}",
+			body, new List<string> { "roy@we4u.solutions" });
+
+		_isSubmitted = true;
 	}
 }
